@@ -40,13 +40,14 @@ module.exports = function (ctx) {
     devServer: {
       https: true,
       proxy: {
-        "/backend/api": {
-          target: "http://127.0.0.1:8000",
-          pathRewrite: {"^/backend/api" : "api"}
+        "/backend/api/**": {
+          target: "http://localhost:8000",
+          pathRewrite: {"^/backend/api" : "backend/api"},
+          changeOrigin: true
         }
-      }      
+      },      
       // https: true,
-      // port: 8080,
+      port: 8080,
       // open: true // opens browser window automatically
     },
     // framework: 'all' --- includes everything; for dev only!
